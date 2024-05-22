@@ -11,7 +11,12 @@ return(
                     <div key={note.id}>
                     {/* <h2>{note.title}</h2>
                     <p>{note.image}</p> */}
-                    <Image src={note.image} alt={note.title} width={200} height={200} />
+                    <Image 
+                        src={note.image} 
+                        alt={note.title}
+                        layout="fill"
+                        objectFit="contain"
+                    />
 
                     </div>
             ))}
