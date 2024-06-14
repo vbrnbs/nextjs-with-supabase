@@ -8,6 +8,12 @@ const nextConfig = {
             // port: '',
             // pathname: '/account123/**',
           },
+          {
+            protocol: 'https',
+            hostname: 'www.jbhifi.co.nz',
+            // port: '',
+            // pathname: '/account123/**',
+          },
         ],
       },
 };

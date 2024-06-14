@@ -45,15 +45,17 @@ export default function Dashboard() {
 
   return (
     <>
-      <div className='flex w-1/2 justify-between mt-2 p-2 border border-white rounded'>
-        <select value={selectedVideoId} onChange={(e) => setSelectedVideoId(e.target.value)} className='bg-black mr-3 w-1/3'>
+      <div className='flex w-1/2 justify-between mt-2 p-1 border rounded'>
+        <select value={selectedVideoId} onChange={(e) => setSelectedVideoId(e.target.value)} className='mr-3 w-1/3 border rounded p-2'>
           <option value="">Select a video</option>
           {notes && notes.map((note: any) => (
             <option key={note.id} value={note.image}>
               {note.title}
             </option>
           ))}
+        
         </select>
+        
         <div className='flex gap-4'>
         <button className="active:underline" onClick={() => setCommand('play')}>Play</button>
         <button className="active:underline" onClick={() => setCommand('pause')}>Pause</button>
