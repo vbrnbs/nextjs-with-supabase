@@ -13,6 +13,10 @@ module.exports = {
           background: "hsl(var(--btn-background))",
           "background-hover": "hsl(var(--btn-background-hover))",
         },
+        fontFamily: {
+          grotesk: ['Space Grotesk', 'sans-serif'],
+          // Roboto: ["Roboto", "sans-serif"],
+        },
       },
     },
   },

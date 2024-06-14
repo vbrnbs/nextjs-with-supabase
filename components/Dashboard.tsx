@@ -45,7 +45,7 @@ export default function Dashboard() {
 
   return (
     <>
-      <div className='flex justify-between mt-2'>
+      <div className='flex w-1/2 justify-between mt-2 p-2 border border-white rounded'>
         <select value={selectedVideoId} onChange={(e) => setSelectedVideoId(e.target.value)} className='bg-black mr-3 w-1/3'>
           <option value="">Select a video</option>
           {notes && notes.map((note: any) => (
