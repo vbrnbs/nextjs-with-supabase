@@ -25,6 +25,7 @@ const Navigation = () => {
             <Image src="/logo.png" alt="logo" width={40} height={40} />
           </Link>
           {isSupabaseConnected && <AuthButton />}
+          <AuthButton />
           <ModeToggle />
         </div>
         

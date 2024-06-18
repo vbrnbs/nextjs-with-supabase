@@ -7,8 +7,8 @@ export default async function Index() {
 
 
   return (
-    <div className="w-screen min-h-screen flex flex-col items-center px-4 md:px-0">
-      <div className="animate-in flex-1 flex flex-col gap-20 opacity-0 max-w-4xl px-3">
+    <div className="min-h-screen flex flex-col items-center">
+      <div className="animate-in flex-1 flex flex-col gap-20 opacity-0 max-w-4xl">
       <Hero />
       <ChooseUs />
       <QuizBanner />
