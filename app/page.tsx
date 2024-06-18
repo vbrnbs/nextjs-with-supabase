@@ -1,6 +1,6 @@
 import Hero from "@/components/Hero";
 import Dashboard from '@/components/Dashboard';
-import Quiz from '@/components/Quiz';
+import QuizBanner from '@/components/QuizBanner';
 import ChooseUs from "@/components/ChooseUs";
 
 export default async function Index() {
@@ -11,7 +11,7 @@ export default async function Index() {
       <div className="animate-in flex-1 flex flex-col gap-20 opacity-0 max-w-4xl px-3">
       <Hero />
       <ChooseUs />
-      <Quiz />
+      <QuizBanner />
 
         {/* <Header />
          */}

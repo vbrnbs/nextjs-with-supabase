@@ -9,15 +9,14 @@ export default function ProtectLayout({
   }) {
 
     return (
-        <div className="flex-1 w-full flex flex-col gap-20 items-center">
+      <div className="flex-1 w-full flex flex-col gap-20 items-center">
         <div className="w-full">
-          <div className="py-6 font-bold bg-purple-950 text-center">
+          <div style={{background: 'linear-gradient(90deg, #883CF7 0%, #00E0CB 100%)'}} 
+          className="py-6 font-bold text-white text-center">
            !GET YOUR SCORE NOW!
           </div>
-          
           {children}
         </div>
         </div>
-
     )
 }

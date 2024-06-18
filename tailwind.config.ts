@@ -72,6 +72,11 @@ const config = {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
       },
+      brandGrad: {
+        'background': 'linear-gradient(90deg, #883CF7 0%, #00E0CB 100%)',
+        '-webkit-background-clip': 'text',
+        '-webkit-text-fill-color': 'transparent',
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],

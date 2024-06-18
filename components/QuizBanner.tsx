@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
-export default function Quiz() {
+export default function QuizBanner() {
   return (
     <>
       {/* Hero */}
@@ -33,10 +34,13 @@ export default function Quiz() {
               </div>
               {/* Buttons */}
               <div className="mt-8 gap-3 flex justify-center">
-                <Button size={"lg"} variant={"default"}>TAKE QUIZ</Button>
-                <Button size={"lg"} variant={"outline"}>
-                  Learn more
-                </Button>
+                <Link href="/quiz">
+                <Button size={"lg"} variant={"default"}  >TAKE QUIZ</Button>
+                </Link>
+                <Link href="/quiz">
+                <Button size={"lg"} variant={"outline"}>Learn more</Button>
+                </Link>
+                  
               </div>
               {/* End Buttons */}
             </div>
