@@ -8,7 +8,9 @@ export async function POST(request: Request) {
         .upsert({ image: video.videoId, command: video.command });
   
       return Response.json({ success: true, message: `${video} with command: ${video.command}` });
+
     } catch (error) {
+      
       console.error('Error:', error);
       return Response.json({ success: false, message: 'An unexpected error occurred' });
     }

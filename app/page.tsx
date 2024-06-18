@@ -1,9 +1,6 @@
-import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
 import Dashboard from '@/components/Dashboard';
 import Quiz from '@/components/Quiz';
-import { Button } from "@/components/ui/button";
-import Header from "@/components/Header";
 import ChooseUs from "@/components/ChooseUs";
 
 export default async function Index() {
@@ -11,7 +8,6 @@ export default async function Index() {
 
   return (
     <div className="w-screen min-h-screen flex flex-col items-center px-4 md:px-0">
-      <Navigation />
       <div className="animate-in flex-1 flex flex-col gap-20 opacity-0 max-w-4xl px-3">
       <Hero />
       <ChooseUs />

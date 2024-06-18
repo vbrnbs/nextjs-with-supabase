@@ -2,6 +2,7 @@ import { GeistSans } from "geist/font/sans";
 import { Space_Grotesk } from "next/font/google";
 import { ThemeProvider } from "@/components/themeProvider";
 import "./globals.css";
+import Navigation from "@/components/Navigation";
 
 
 const grotesk = Space_Grotesk({
@@ -37,6 +38,7 @@ export default function RootLayout({
             disableTransitionOnChange
           >
             <main className="min-h-screen flex flex-col items-center">
+            <Navigation />
           {children}
           </main>
           </ThemeProvider>
