@@ -124,49 +124,21 @@ const QuizForm = () => {
   );
   const [isQuizCompleted, setIsQuizCompleted] = useState(false);
   const [score, setScore] = useState<number | null>(null);
-  // const [startTime, setStartTime] = useState<Date | null>(null);
-  // const [endTime, setEndTime] = useState<Date | null>(null);
-  // const [elapsedTime, setElapsedTime] = useState<number | null>(null);
-
-  // const getElapsedTime = () => {
-  //   console.log(startTime, endTime);
-  //   console.log(
-  //     endTime && startTime && endTime.getTime() - startTime.getTime()
-  //   );
-  //   if (!startTime || !endTime) return null;
-  //   const diff = endTime.getTime() - startTime.getTime();
-  //   setElapsedTime((diff % 6000) / 100);
-  // };
 
   const handleAnswer = async (answerIndex: number) => {
     const updatedAnswers = [...answers];
     updatedAnswers[currentQuestionIndex] = answerIndex + 1; // +1 to match your scoring system
     setAnswers(updatedAnswers);
 
-    // Record the start time when the first question is answered
-    // if (currentQuestionIndex === 0 && !startTime) {
-    //   setStartTime(new Date());
-    // }
-
     if (currentQuestionIndex < questions.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
     } else {
-      // Record the end time when the last question is answered
-      // console.log("Before setting end time"); // Debugging line
-      // setEndTime(new Date());
-      // console.log("After setting end time"); // Debugging line
-
-      // Calculate the score when the quiz is completed
       const totalScore = updatedAnswers.reduce(
         (acc, answer) => acc + answer,
         0
       );
       setScore(totalScore);
       setIsQuizCompleted(true);
-      // getElapsedTime();
-
-      // Optionally, send the answers to the server
-      await submitQuizAnswers(updatedAnswers, totalScore);
     }
   };
 
@@ -182,10 +154,9 @@ const QuizForm = () => {
   return (
     <div className="flex flex-col items-center container h-screen p-12">
       {isQuizCompleted ? (
-        <QuizResults score={score} />
+        <QuizResults answers={answers} score={score} />
       ) : (
         <>
-          {/* Progress Bar, Navigation and Title */}
           <div className="flex flex-col justify-between w-full h-1/4 mb-32">
             <Button
               onClick={handleBack}
@@ -204,12 +175,9 @@ const QuizForm = () => {
                 {currentQuestionIndex + 1} / {questions.length}
               </p>
             </div>
-
-            <div className="flex justify-self-start "></div>
             <h1 className="text-3xl mb-12">{currentQuestion.title}</h1>
           </div>
-          {/* Question and Options */}
-          <div className="flex flex-col  container justify-center items-center">
+          <div className="flex flex-col container justify-center items-center">
             <h1 className="text-2xl mb-12">{currentQuestion.question}</h1>
             <div className="flex flex-col flex-nowrap">
               {currentQuestion.options.map((option, index) => (
@@ -228,22 +196,6 @@ const QuizForm = () => {
       )}
     </div>
   );
-};
-
-const submitQuizAnswers = async (
-  answers: number[],
-  score: number,
-
-) => {
-  const response = await fetch("/api/quiz/submit", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ answers, score }),
-  });
-  const result = await response.json();
-  return result;
 };
 
 export default QuizForm;
