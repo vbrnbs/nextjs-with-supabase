@@ -2,10 +2,10 @@ import { supabase } from '@/utils/supabase/client';
 
 export async function POST(request: Request) {
   try {
-    const { answers, score } = await request.json();
+    const { answers, score, elapsedTime } = await request.json();
     const { data, error } = await supabase
       .from('quiz_res')
-      .insert([{ answers, score }]);
+      .insert([{ answers, score, elapsedTime }]);
 
     if (error) {
       throw error;

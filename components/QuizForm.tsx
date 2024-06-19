@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Button } from "./ui/button";
-import Link from "next/link";
+import QuizResults from "./QuizResults";
 
 const questions = [
   {
@@ -124,15 +124,38 @@ const QuizForm = () => {
   );
   const [isQuizCompleted, setIsQuizCompleted] = useState(false);
   const [score, setScore] = useState<number | null>(null);
+  // const [startTime, setStartTime] = useState<Date | null>(null);
+  // const [endTime, setEndTime] = useState<Date | null>(null);
+  // const [elapsedTime, setElapsedTime] = useState<number | null>(null);
+
+  // const getElapsedTime = () => {
+  //   console.log(startTime, endTime);
+  //   console.log(
+  //     endTime && startTime && endTime.getTime() - startTime.getTime()
+  //   );
+  //   if (!startTime || !endTime) return null;
+  //   const diff = endTime.getTime() - startTime.getTime();
+  //   setElapsedTime((diff % 6000) / 100);
+  // };
 
   const handleAnswer = async (answerIndex: number) => {
     const updatedAnswers = [...answers];
-    updatedAnswers[currentQuestionIndex] = answerIndex + 1;
+    updatedAnswers[currentQuestionIndex] = answerIndex + 1; // +1 to match your scoring system
     setAnswers(updatedAnswers);
+
+    // Record the start time when the first question is answered
+    // if (currentQuestionIndex === 0 && !startTime) {
+    //   setStartTime(new Date());
+    // }
 
     if (currentQuestionIndex < questions.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
     } else {
+      // Record the end time when the last question is answered
+      // console.log("Before setting end time"); // Debugging line
+      // setEndTime(new Date());
+      // console.log("After setting end time"); // Debugging line
+
       // Calculate the score when the quiz is completed
       const totalScore = updatedAnswers.reduce(
         (acc, answer) => acc + answer,
@@ -140,6 +163,7 @@ const QuizForm = () => {
       );
       setScore(totalScore);
       setIsQuizCompleted(true);
+      // getElapsedTime();
 
       // Optionally, send the answers to the server
       await submitQuizAnswers(updatedAnswers, totalScore);
@@ -152,69 +176,65 @@ const QuizForm = () => {
     }
   };
 
-  if (isQuizCompleted) {
-    return (
-      <div className="flex flex-col items-center justify-center h-screen">
-        <h1 className="text-4xl mb-4">Quiz Completed</h1>
-        <p className="text-2xl mb-48">Your score: {score}</p>
-        <Link className='hover:underline cursor-pointer' href="/">
-        back to main
-        </Link>
-      </div>
-    );
-  }
-
   const currentQuestion = questions[currentQuestionIndex];
   const progress = ((currentQuestionIndex + 1) / questions.length) * 100;
 
   return (
     <div className="flex flex-col items-center container h-screen p-12">
-      <div className="flex flex-col justify-between w-full h-1/4 mb-32">
-        <Button
-          onClick={handleBack}
-          className="max-w-max text-foreground font-bold py-2 px-4 rounded mr-2"
-          variant="outline"
-          disabled={currentQuestionIndex === 0}
-        >
-          {`${"<"}`}
-        </Button>
-        <div className="w-full h-2 bg-gray-200">
-          <div
-            className="h-full bg-blue-500" 
-            style={{ width: `${progress}%` }}
-          ></div>
-          <p className="text-sm my-2">
-            {currentQuestionIndex + 1} / {questions.length}
-          </p>
-        </div>
+      {isQuizCompleted ? (
+        <QuizResults score={score} />
+      ) : (
+        <>
+          {/* Progress Bar, Navigation and Title */}
+          <div className="flex flex-col justify-between w-full h-1/4 mb-32">
+            <Button
+              onClick={handleBack}
+              className="max-w-max text-foreground font-bold py-2 px-4 rounded mr-2"
+              variant="outline"
+              disabled={currentQuestionIndex === 0}
+            >
+              {`${"<"}`}
+            </Button>
+            <div className="w-full h-2 bg-gray-200">
+              <div
+                className="h-full bg-blue-500"
+                style={{ width: `${progress}%` }}
+              ></div>
+              <p className="text-sm my-2">
+                {currentQuestionIndex + 1} / {questions.length}
+              </p>
+            </div>
 
-        <div className="flex justify-self-start ">
-          
-        </div>
-        <h1 className="text-3xl mb-12">{currentQuestion.title}</h1>
-      </div>
-      {/* ahahahahhahahahahahhahahahahhahahahhahahahahhahahahahahhahahahahhahahahhahahahahhahahahahahhahahahahhahahahha */}
-      <div className="flex flex-col justify-center items-center">
-        <h1 className="text-2xl mb-12">{currentQuestion.question}</h1>
-      <div>
-        {currentQuestion.options.map((option, index) => (
-          <Button
-            key={index}
-            onClick={() => handleAnswer(index)}
-            variant="outline"
-            className="max-w-lg text-wrap hover:bg-opacity-50 px-12 w-full mb-4 text-xl"
-          >
-            {option}
-          </Button>
-        ))}
-      </div>
-      </div>
-      
+            <div className="flex justify-self-start "></div>
+            <h1 className="text-3xl mb-12">{currentQuestion.title}</h1>
+          </div>
+          {/* Question and Options */}
+          <div className="flex flex-col  container justify-center items-center">
+            <h1 className="text-2xl mb-12">{currentQuestion.question}</h1>
+            <div className="flex flex-col flex-nowrap">
+              {currentQuestion.options.map((option, index) => (
+                <Button
+                  key={index}
+                  onClick={() => handleAnswer(index)}
+                  variant="outline"
+                  className="max-w-lg text-wrap hover:bg-opacity-50 px-12 w-full mb-4 text-xl hover:text-background hover:bg-foreground"
+                >
+                  {option}
+                </Button>
+              ))}
+            </div>
+          </div>
+        </>
+      )}
     </div>
   );
 };
 
-const submitQuizAnswers = async (answers: number[], score: number) => {
+const submitQuizAnswers = async (
+  answers: number[],
+  score: number,
+
+) => {
   const response = await fetch("/api/quiz/submit", {
     method: "POST",
     headers: {
