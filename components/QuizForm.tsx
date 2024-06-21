@@ -152,7 +152,7 @@ const QuizForm = () => {
   const progress = ((currentQuestionIndex + 1) / questions.length) * 100;
 
   return (
-    <div className="flex flex-col items-center w-full min-h-screen ">
+    <div className="flex flex-col items-center w-full">
       {isQuizCompleted ? (
         <QuizResults answers={answers} score={score} />
       ) : (

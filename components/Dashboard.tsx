@@ -45,7 +45,7 @@ export default function Dashboard() {
   }
 
   return (
-    <div className="flex flex-col items-center w-screen lg:w-full bg-brand lg:rounded-lg">
+    <div className="flex flex-col items-center w-screen lg:w-full bg-brand lg:rounded-lg text-white">
       <div className="flex w-full justify-between p-4">
         <select
           value={selectedVideoId}

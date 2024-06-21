@@ -20,9 +20,12 @@ interface QuizAlertProps {
   
 const QuizAlert: React.FC<QuizAlertProps> = ({email, setEmail, handleSubmit}) => {
   return (
-    <div>
+    <div className="mx-2 relative">
           <AlertDialog defaultOpen>
             <AlertDialogContent>
+            <div className="w-1">
+              <AlertDialogCancel><p className="text-xs">x</p></AlertDialogCancel>
+            </div>
               <AlertDialogHeader>
                 <AlertDialogTitle>Get your results!</AlertDialogTitle>
                 <AlertDialogDescription>
