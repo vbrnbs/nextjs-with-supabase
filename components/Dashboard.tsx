@@ -1,20 +1,21 @@
-'use client'
+"use client";
 
-import { createClient } from '@/utils/supabase/client';
-import { useEffect, useState } from 'react';
+import { createClient } from "@/utils/supabase/client";
+import { PauseIcon, PlayIcon } from "lucide-react";
+import { useEffect, useState } from "react";
 
 export default function Dashboard() {
   const [notes, setNotes] = useState<any[] | null>(null);
   const [currentImage, setCurrentImage] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
-  const [command, setCommand] = useState("")
+  const [command, setCommand] = useState("");
   const supabase = createClient();
 
-  const [selectedVideoId, setSelectedVideoId] = useState('');
+  const [selectedVideoId, setSelectedVideoId] = useState("");
 
   useEffect(() => {
     const getData = async () => {
-      const { data } = await supabase.from('videos').select();
+      const { data } = await supabase.from("videos").select();
       setNotes(data);
       setLoading(false);
     };
@@ -22,49 +23,68 @@ export default function Dashboard() {
   }, []);
 
   const handleSelectVideo = async (command: string) => {
-    console.log(command)
-      const response = await fetch('/api/stream', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'text/plain',
-        },
-        body: JSON.stringify({videoId: selectedVideoId, command: command})
-      });
-  
-      if (response.ok) {
-        console.log(`${selectedVideoId} sent successfully`);
-        setCurrentImage(selectedVideoId);
-      } else {
-        console.error('Failed to send control command');
-      }
+    console.log(command);
+    const response = await fetch("/api/stream", {
+      method: "POST",
+      headers: {
+        "Content-Type": "text/plain",
+      },
+      body: JSON.stringify({ videoId: selectedVideoId, command: command }),
+    });
+
+    if (response.ok) {
+      console.log(`${selectedVideoId} sent successfully`);
+      setCurrentImage(selectedVideoId);
+    } else {
+      console.error("Failed to send control command");
     }
+  };
 
   if (loading) {
     return <div>Loading...</div>;
   }
 
   return (
-    <>
-      <div className='flex w-1/2 justify-between mt-2 p-1 border rounded'>
-        <select value={selectedVideoId} onChange={(e) => setSelectedVideoId(e.target.value)} className='mr-3 w-1/3 border rounded p-2'>
+    <div className="flex flex-col items-center w-screen lg:w-full bg-brand lg:rounded-lg">
+      <div className="flex w-full justify-between p-4">
+        <select
+          value={selectedVideoId}
+          onChange={(e) => setSelectedVideoId(e.target.value)}
+          className="mr-3 border rounded p-2 bg-slate-300/20"
+        >
           <option value="">Select a video</option>
-          {notes && notes.map((note: any) => (
-            <option key={note.id} value={note.image}>
-              {note.title}
-            </option>
-          ))}
-        
+          {notes &&
+            notes.map((note: any) => (
+              <option key={note.id} value={note.image}>
+                {note.title}
+              </option>
+            ))}
         </select>
-        
-        <div className='flex gap-4'>
-        <button className="active:underline" onClick={() => setCommand('play')}>Play</button>
-        <button className="active:underline" onClick={() => setCommand('pause')}>Pause</button>
-        <button className="active:underline" onClick={() => setCommand('fullscreen')}>Fullscreen</button>
-        <button className='px-2 rounded-md outline active:underline' onClick={() => handleSelectVideo(command)} >Select Video</button>
+
+        <div className="flex gap-4 bg-slate-300/10 rounded px-2 py-0 animate-pulse *:transform *:transition *:ease-in-out">
+          <button
+            className="hover:scale-150"
+            onClick={() => setCommand("play")}
+          >
+            <PlayIcon size={20} />
+          </button>
+          <button
+            className="hover:scale-150"
+            onClick={() => setCommand("pause")}
+          >
+            <PauseIcon size={20} />
+          </button>
+          {/* <button className="active:underline" onClick={() => setCommand('fullscreen')}>Fullscreen</button> */}
+          <button
+            className="px-2 rounded-md outline shadow hover:scale-110 *:hover:animate-bounce"
+            onClick={() => handleSelectVideo(command)}
+          >
+            <p className="font-bold">GO!</p>
+          </button>
         </div>
       </div>
-      {currentImage && <video src={currentImage} width="920" controls autoPlay />}
-    </>
+      {currentImage && <video className="pb-4" src={currentImage} width="920" autoPlay />}
+    </div>
   );
 }
 

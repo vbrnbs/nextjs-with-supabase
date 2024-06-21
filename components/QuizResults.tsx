@@ -1,17 +1,8 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-} from "@/components/ui/alert-dialog";
-import { Input } from "./ui/input";
+import QuizAlert from "./QuizAlert";
+
 
 const ready = 13;
 const almost = 20;
@@ -67,63 +58,38 @@ const QuizResults: React.FC<QuizResultsProps> = ({ answers, score }) => {
     return result;
   };
 
-  const handleSkipEmail = async () => {
-    const data = { answers, score };
-    const response = await fetch("/api/quiz/submit", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
-    const result = await response.json();
-    return result;
-  };
+  // const handleSkipEmail = async () => {
+  //   const data = { answers, score };
+  //   const response = await fetch("/api/quiz/submit", {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify(data),
+  //   });
+  //   const result = await response.json();
+  //   return result;
+  // };
 
   return (
-    <div className="flex flex-col items-center justify-between h-screen text-center py-36">
+    <div className="flex flex-col items-center justify-between min-h-screen text-center py-36">
       <div>
         <div>
-          <AlertDialog defaultOpen>
-            <AlertDialogContent>
-              <AlertDialogHeader>
-                <AlertDialogTitle>Get your results!</AlertDialogTitle>
-                <AlertDialogDescription>
-                  Just add your email here.
-                </AlertDialogDescription>
-              </AlertDialogHeader>
-              <AlertDialogFooter>
-                <Input
-                  type="text"
-                  placeholder="your favourite email address"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-                <AlertDialogAction>
-                  <Button onClick={handleSubmit}>Submit</Button>
-                </AlertDialogAction>
-                <AlertDialogCancel>
-                  <Button variant="link" onClick={handleSkipEmail}>Skip</Button>
-                </AlertDialogCancel>
-              </AlertDialogFooter>
-            </AlertDialogContent>
-          </AlertDialog>
+          <QuizAlert email={email} setEmail={setEmail} handleSubmit={handleSubmit} />
         </div>
         <h1 className="text-4xl mb-4">Quiz Completed</h1>
         <p className="text-3xl mb-12">Your score: {readynessScore}</p>
         <p className="text-6xl mb-4">{title}</p>
         <p className="text-2xl mb-24">{subtitle}</p>
       </div>
-      <p className="text-2xl mb-12 w-3/4">{message}</p>
-      <p className="">Follow up: {followup}</p>
-      <div className="flex gap-4">
+      <p className="text-xl md:text-2xl mb-12 lg:w-3/4 text-justify">{message}</p>
+      <p className="mb-12">Follow up: {followup}</p>
         <Button
           className="hover:bg-foreground hover:text-background"
           variant="outline"
         >
           <Link href="/">Email me the Guide!</Link>
         </Button>
-      </div>
     </div>
   );
 };

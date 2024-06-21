@@ -9,14 +9,12 @@ module.exports = {
       colors: {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
-        btn: {
-          background: "hsl(var(--btn-background))",
-          "background-hover": "hsl(var(--btn-background-hover))",
-        },
-        fontFamily: {
-          grotesk: ['Space Grotesk', 'sans-serif'],
-          // Roboto: ["Roboto", "sans-serif"],
-        },
+      },
+      backgroundImage: {
+        'brand': 'linear-gradient(90deg, #883CF7 0%, #00E0CB 100%)',
+      },
+      fontFamily: {
+        grotesk: ['Space Grotesk', 'sans-serif'],
       },
     },
   },

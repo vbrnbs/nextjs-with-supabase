@@ -152,12 +152,13 @@ const QuizForm = () => {
   const progress = ((currentQuestionIndex + 1) / questions.length) * 100;
 
   return (
-    <div className="flex flex-col items-center container h-screen p-12">
+    <div className="flex flex-col items-center w-full min-h-screen ">
       {isQuizCompleted ? (
         <QuizResults answers={answers} score={score} />
       ) : (
         <>
-          <div className="flex flex-col justify-between w-full h-1/4 mb-32">
+        {/* Progress bar */}
+          <div className="flex flex-col justify-between w-full gap-4 mb-32">
             <Button
               onClick={handleBack}
               className="max-w-max text-foreground font-bold py-2 px-4 rounded mr-2"
@@ -168,24 +169,25 @@ const QuizForm = () => {
             </Button>
             <div className="w-full h-2 bg-gray-200">
               <div
-                className="h-full bg-blue-500"
+                className="w-full h-full bg-brand"
                 style={{ width: `${progress}%` }}
               ></div>
-              <p className="text-sm my-2">
+              <p className="text-sm mt-1 mb-2">
                 {currentQuestionIndex + 1} / {questions.length}
               </p>
             </div>
-            <h1 className="text-3xl mb-12">{currentQuestion.title}</h1>
+            <h1 className="text-3xl mt-12">{currentQuestion.title}</h1>
           </div>
-          <div className="flex flex-col container justify-center items-center">
-            <h1 className="text-2xl mb-12">{currentQuestion.question}</h1>
-            <div className="flex flex-col flex-nowrap">
+          {/* Questions and Answers */}
+          <div className="flex flex-col container text-center justify-center items-center text-xl md:text-2xl">
+            <h1 className="mb-12">{currentQuestion.question}</h1>
+            <div className="flex flex-col items-center flex-nowrap w-full">
               {currentQuestion.options.map((option, index) => (
                 <Button
                   key={index}
                   onClick={() => handleAnswer(index)}
                   variant="outline"
-                  className="max-w-lg text-wrap hover:bg-opacity-50 px-12 w-full mb-4 text-xl hover:text-background hover:bg-foreground"
+                  className="max-w-lg text-wrap hover:bg-opacity-50 w-full mb-4 md:text-xl hover:text-background hover:bg-foreground"
                 >
                   {option}
                 </Button>

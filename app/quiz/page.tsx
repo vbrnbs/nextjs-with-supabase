@@ -3,7 +3,7 @@ import React from 'react'
 
 const Page = () => {
   return (
-    <div className="flex justify-center items-center h-screen">
+    <div className="flex justify-center items-center container min-h-screen px-4 py-12">
       <QuizForm />
     </div>
   )
