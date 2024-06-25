@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "./ui/button";
 import QuizResults from "./QuizResults";
 
@@ -124,11 +124,13 @@ const QuizForm = () => {
   );
   const [isQuizCompleted, setIsQuizCompleted] = useState(false);
   const [score, setScore] = useState<number | null>(null);
+  const [start, setStart] = useState<Date | null> (null);
 
   const handleAnswer = async (answerIndex: number) => {
     const updatedAnswers = [...answers];
     updatedAnswers[currentQuestionIndex] = answerIndex + 1; // +1 to match your scoring system
     setAnswers(updatedAnswers);
+
 
     if (currentQuestionIndex < questions.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
@@ -142,6 +144,16 @@ const QuizForm = () => {
     }
   };
 
+  useEffect (() => {
+    const startTimer = () => {
+      if (currentQuestionIndex === 1) {
+        setStart(new Date());
+      }
+    }
+    startTimer();
+  }, [currentQuestionIndex]);
+
+
   const handleBack = () => {
     if (currentQuestionIndex > 0) {
       setCurrentQuestionIndex(currentQuestionIndex - 1);
@@ -154,7 +166,7 @@ const QuizForm = () => {
   return (
     <div className="flex flex-col items-center w-full">
       {isQuizCompleted ? (
-        <QuizResults answers={answers} score={score} />
+        <QuizResults answers={answers} score={score} startTime={start}/>
       ) : (
         <>
         {/* Progress bar */}

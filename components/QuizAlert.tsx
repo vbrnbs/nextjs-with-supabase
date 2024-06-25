@@ -24,7 +24,7 @@ const QuizAlert: React.FC<QuizAlertProps> = ({email, setEmail, handleSubmit}) =>
           <AlertDialog defaultOpen>
             <AlertDialogContent>
             <div className="w-1">
-              <AlertDialogCancel><p className="text-xs">x</p></AlertDialogCancel>
+              <AlertDialogCancel><button className="text-xs -translate-x-4 " onClick={handleSubmit}>x</button></AlertDialogCancel>
             </div>
               <AlertDialogHeader>
                 <AlertDialogTitle>Get your results!</AlertDialogTitle>

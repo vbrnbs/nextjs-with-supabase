@@ -3,7 +3,6 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import QuizAlert from "./QuizAlert";
 
-
 const ready = 13;
 const almost = 20;
 const needMore = 28;
@@ -11,9 +10,14 @@ const needMore = 28;
 interface QuizResultsProps {
   answers: number[];
   score: number | null;
+  startTime: Date | null;
 }
 
-const QuizResults: React.FC<QuizResultsProps> = ({ answers, score }) => {
+const QuizResults: React.FC<QuizResultsProps> = ({
+  answers,
+  score,
+  startTime,
+}) => {
   const [email, setEmail] = useState("");
 
   let title, subtitle, message, readynessScore, followup;
@@ -46,7 +50,7 @@ const QuizResults: React.FC<QuizResultsProps> = ({ answers, score }) => {
   }
 
   const handleSubmit = async () => {
-    const data = { answers, score, email };
+    const data = { answers, score, email, startTime };
     const response = await fetch("/api/quiz/submit", {
       method: "POST",
       headers: {
@@ -75,21 +79,28 @@ const QuizResults: React.FC<QuizResultsProps> = ({ answers, score }) => {
     <div className="flex flex-col items-center justify-between min-h-screen text-center py-36">
       <div>
         <div>
-          <QuizAlert email={email} setEmail={setEmail} handleSubmit={handleSubmit} />
+          <QuizAlert
+            email={email}
+            setEmail={setEmail}
+            handleSubmit={handleSubmit}
+          />
         </div>
         <h1 className="text-4xl mb-4">Quiz Completed</h1>
+        <p className="text-2xl mb-12">Score: {score}</p>
         <p className="text-3xl mb-12">Your score: {readynessScore}</p>
         <p className="text-6xl mb-4">{title}</p>
         <p className="text-2xl mb-24">{subtitle}</p>
       </div>
-      <p className="text-xl md:text-2xl mb-12 lg:w-3/4 text-justify">{message}</p>
+      <p className="text-xl md:text-2xl mb-12 lg:w-3/4 text-justify">
+        {message}
+      </p>
       <p className="mb-12">Follow up: {followup}</p>
-        <Button
-          className="hover:bg-foreground hover:text-background"
-          variant="outline"
-        >
-          <Link href="/">Email me the Guide!</Link>
-        </Button>
+      <Button
+        className="hover:bg-foreground hover:text-background"
+        variant="outline"
+      >
+        <Link href="/">Email me the Guide!</Link>
+      </Button>
     </div>
   );
 };
