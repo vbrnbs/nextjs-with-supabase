@@ -3,6 +3,8 @@ import { ThemeProvider } from "@/components/themeProvider";
 import "./globals.css";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import QuizBanner from "@/components/QuizBanner";
+import HeroSection from "@/components/Hero";
 
 const defaultUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
@@ -30,6 +32,8 @@ export default function RootLayout({
         >
           <main className="min-h-screen flex flex-col items-center">
             <Navigation />
+            {/* <HeroSection /> */}
+            {/* <QuizBanner /> */}
             {children}
             <Footer />
           </main>

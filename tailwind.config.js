@@ -12,6 +12,7 @@ module.exports = {
       },
       backgroundImage: {
         'brand': 'linear-gradient(90deg, #883CF7 0%, #00E0CB 100%)',
+        'brand-reverse': 'linear-gradient(45deg, #883CF7 -40%, #00E0CB 100%)',
       },
       fontFamily: {
         grotesk: ['Space Grotesk', 'sans-serif'],

@@ -3,10 +3,12 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import Header from "./Header";
 import { CircleCheck } from "lucide-react";
+import Image from "next/image";
 
-export default function HeroSectionWithEmailInput() {
+export default function HeroSection() {
   return (
     <>
+
       {/* Hero */}
       <div className="container py-24 lg:py-32">
         {/* Grid */}
@@ -37,7 +39,10 @@ export default function HeroSectionWithEmailInput() {
           </div>
           {/* End Col */}
           <div className="lg:order-2 order-1 lg:col-span-4 mt-10 lg:mt-0">
-            <div className="w-full aspect-[4/3] border rounded-lg"></div>
+            <div className="w-full flex justify-center bg-brand rounded-lg">
+            <Image src="/control.png" alt="quiz-banner" /* layout="fill" objectFit="cover"*/ width={800} height={800} />
+
+            </div>
           {/* <Header /> */}
           </div>
           {/* End Col */}
