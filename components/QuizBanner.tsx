@@ -14,7 +14,7 @@ export default function QuizBanner() {
             </h1>
           </div>
           <div className="mt-5 max-w-3xl">
-            <p className="text-3xl text-muted-foreground">
+            <p className="text-3xl text-muted-foreground py-4">
               Drive growth and generate more sales!
             </p>
             <p>
