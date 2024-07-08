@@ -5,8 +5,8 @@ import { Highlight } from "./ui/hero-highlight";
 
 export default function QuizBanner() {
   return (
-    <div className="w-full flex flex-col-reverse lg:flex-row lg:justify-between lg:pr-3 items-center lg:mt-32 lg:gap-4">
-      <div className="w-full flex justify-center lg:justify-end items-center py-24 px-4 lg:px-0 lg:py-0 h-[500px]">
+    <div className="w-full flex flex-col-reverse lg:flex-row lg:justify-between lg:pr-3 items-center lg:mt-32 gap-4">
+      <div className="w-full flex justify-center lg:justify-end items-center py-8 px-4 lg:px-0 lg:py-0 lg:h-[500px]">
       
         <div className="text-center lg:text-right mb-3">
         <p>12 Questions ~ 3 minutes</p>

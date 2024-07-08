@@ -2,6 +2,18 @@ import AuthButton from "../components/AuthButton";
 import { ModeToggle } from "../components/ui/ThemeToggle";   
 import Image from "next/image";
 import Link from "next/link";
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuIndicator,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+  NavigationMenuViewport,
+} from "@/components/ui/navigation-menu"
+import { NavigationMenuDemo } from "./test";
+
 
 // const canInitSupabaseClient = () => {
 //     // This function is just for the interactive tutorial.
@@ -25,6 +37,8 @@ const Navigation = () => {
         <div className="flex gap-3">
           
           {/* {isSupabaseConnected && <AuthButton />} */}
+          <NavigationMenuDemo />
+
           <AuthButton />
           <ModeToggle />
         </div>

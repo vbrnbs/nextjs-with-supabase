@@ -9,6 +9,7 @@ export default async function Index() {
   return (
     <div className="animate-in w-full min-h-screen flex flex-col items-center px-0">
       <QuizBanner />
+      
     </div>
   );
 }
