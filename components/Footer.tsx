@@ -29,14 +29,14 @@ const Footer = () => {
             className="text-sm tracking-wide font-semibold transition-colors"
             prefetch={false}
           >
-            Features
+            Blog
           </Link>
           <Link
             href="#"
             className="text-sm tracking-wide font-semibold transition-colors"
             prefetch={false}
           >
-            Pricing
+            Products
           </Link>
           <Link
             href="#"

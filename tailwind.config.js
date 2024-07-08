@@ -9,6 +9,8 @@ module.exports = {
       colors: {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
+        'brandpurple' : '#8C52FF',
+        'brandblue' : '#5CE1E6',
       },
       backgroundImage: {
         'brand': 'linear-gradient(90deg, #883CF7 0%, #00E0CB 100%)',
