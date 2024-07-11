@@ -2,6 +2,7 @@ import { createClient } from "@/utils/supabase/server";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { Button } from "./ui/button";
+import { LogIn, LogInIcon, LogOutIcon } from "lucide-react";
 
 export default async function AuthButton() {
   const supabase = createClient();
@@ -19,11 +20,11 @@ export default async function AuthButton() {
   };
 
   return user ? (
-    <div className="flex items-center gap-4">
+    <div className="flex items-center gap-4 max-w-40">
       Hey, {user.email}!
       <form action={signOut}>
         <button className="py-2 px-4 rounded-md no-underline bg-btn-background hover:bg-btn-background-hover">
-          Logout
+          <LogOutIcon />
         </button>
       </form>
     </div>
@@ -31,9 +32,10 @@ export default async function AuthButton() {
     <Button variant="outline">
       <Link
         href="/login"
-        className="py-2 px-3 flex rounded-md no-underline bg-btn-background hover:bg-btn-background-hover"
+        className="p-2 flex rounded-md no-underline bg-btn-background hover:bg-btn-background-hover"
       >
-        Login
+        {/* <LogIn /> */}
+        login
       </Link>
     </Button>
   );
