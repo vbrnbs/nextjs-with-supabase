@@ -19,6 +19,9 @@ module.exports = {
       fontFamily: {
         grotesk: ["Space Grotesk", "sans-serif"],
       },
+      lineHeight: {
+        "line-height-title": "3.2",
+      },
     },
   },
   plugins: [

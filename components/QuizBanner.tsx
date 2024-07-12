@@ -14,16 +14,19 @@ export default function QuizBanner() {
           <p>12 Questions ~ 3 minutes</p>
 
           <p className="text-3xl my-3 mb-2 text-brand">
-            MISSING LINK FROM OMNICHANNEL MARKETING
+            OMNICHANNEL MARKETING
           </p>
 
           <p className="text-3xl mt-12 mb-6 font-bold">
-            <Highlight>Connect ONLINE & OFFLINE audience</Highlight>
+            
           </p>
           <div className="w-full flex justify-center lg:justify-end mt-5">
-            <h1 className="scroll-m-20 max-w-2xl text-4xl font-extrabold lg:text-6xl leading-tight">
-              DIGITAL SIGNAGE READINESS{" "}
-              <span className="bg-brand p-1">SCORE</span>
+            <h1 className="scroll-m-20 max-w-2xl text-4xl font-extrabold lg:text-6xl">
+              {/* DIGITAL SIGNAGE READINESS{" "} */}
+              DISCOVER, HOW TO CONNECT{" "}
+              <Highlight>ONLINE&OFFLINE</Highlight>{" "}
+              {/* <span className="bg-brand p-1">E </span> */}
+              AUDIENCE
             </h1>
           </div>
           <div className="my-5 max-w-3xl">

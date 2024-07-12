@@ -29,7 +29,7 @@ export const HeroHighlight = ({
   return (
     <div
       className={cn(
-        "relative h-[40rem] flex items-center bg-white dark:bg-black justify-center w-full group",
+        "relative h-[40rem] flex items-center bg-white dark:bg-black justify-center w-full my-2 group",
         containerClassName
       )}
       onMouseMove={handleMouseMove}
@@ -69,7 +69,7 @@ export const Highlight = ({
   return (
     <motion.span
       initial={{
-        backgroundSize: "0% 100%",
+        backgroundSize: "10% 100%",
       }}
       animate={{
         backgroundSize: "100% 100%",
@@ -81,11 +81,11 @@ export const Highlight = ({
       }}
       style={{
         backgroundRepeat: "no-repeat",
-        backgroundPosition: "left center",
+        backgroundPosition: "center center",
         display: "inline",
       }}
       className={cn(
-        `relative inline-block pl-3 pr-1 pt-1 pb-2 rounded-lg bg-gradient-to-r from-brandblue to-brandpurple`,
+        `relative inline-block pl-1 pr-3 pt-1 pb-2 rounded-lg bg-gradient-to-r from-brandblue to-brandpurple`,
         className
       )}
     >
