@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Image from "next/image";
 import { Highlight } from "./ui/hero-highlight";
-import useScreenSize from "@/hooks/useScreenSize";
+// import useScreenSize from "@/hooks/useScreenSize";
 
 export default function QuizBanner() {
   // const isMobile = useScreenSize();
