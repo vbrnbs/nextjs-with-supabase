@@ -16,6 +16,7 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import { Link2 } from "lucide-react";
+import Image from "next/image";
 
 const components: { title: string; href: string; description: string }[] = [
   {
@@ -67,11 +68,11 @@ export function NavigationMenuDemo() {
                 <NavigationMenuLink asChild>
                   <a
                     className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
-                    href="/"
+                    href="/blog"
                   >
-                    <Link2 className="h-6 w-6" />
+                    <Image src="/logo.png" alt="logo" width={32} height={32} />
                     <div className="mb-2 mt-4 text-lg font-medium">
-                      shadcn/ui
+                      blog
                     </div>
                     <p className="text-sm leading-tight text-muted-foreground">
                       Beautifully designed components that you can copy and
