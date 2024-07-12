@@ -7,7 +7,7 @@ import { HeroHighlightDemo } from "@/components/HeroHighlightDemo";
 
 export default async function Index() {
   return (
-    <div className="animate-in w-full min-h-screen flex flex-col items-center px-0">
+    <div className="animate-in w-full min-h-screen flex flex-col px-0">
       <QuizBanner />
       
     </div>

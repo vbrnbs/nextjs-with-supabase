@@ -11,10 +11,14 @@ export default function HeroSection() {
     <>
 
       {/* Hero */}
-      <div className="container pb-24 lg:py-32">
+      <div className="container pt-0 mt-0 pb-24 lg:py-32">
         {/* Grid */}
         <div className="grid lg:grid-cols-7 lg:gap-x-8 xl:gap-x-12 lg:items-center">
-          <div className="lg:order-1 order-2 lg:col-span-3 mt-12 lg:mt-0 px-4">
+          <div className="order-2 lg:col-span-3 mt-12 lg:mt-0 px-4">
+          <p className="text-3xl mb-8 text-brand">
+            OMNICHANNEL MARKETING
+          </p>
+
             <div className="scroll-m-20 text-4xl font-extrabold tracking-tight line-height-title">
             DISCOVER HOW TO CONNECT{" "}
             <div className="flex">
@@ -50,9 +54,9 @@ export default function HeroSection() {
             </div>
           </div>
           {/* End Col */}
-          <div className="lg:order-2 order-1 lg:col-span-4 mt-10 lg:mt-0">
-            <div className="w-full flex justify-center bg-brand rounded-lg">
-            <Image src="/control.png" alt="quiz-banner" /* layout="fill" objectFit="cover"*/ width={800} height={800} />
+          <div className="order-1 lg:col-span-4 mt-10 lg:mt-0">
+            <div className="w-full flex justify-end rounded-lg shadow-lg">
+            <Image src="/control.png" alt="quiz-banner" className="rounded-md" /* layout="fill" objectFit="cover"*/ width={500} height={500} />
 
             </div>
           {/* <Header /> */}
