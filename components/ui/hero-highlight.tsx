@@ -81,7 +81,7 @@ export const Highlight = ({
       }}
       style={{
         backgroundRepeat: "no-repeat",
-        backgroundPosition: "center center",
+        backgroundPosition: "start center",
         display: "inline",
       }}
       className={cn(

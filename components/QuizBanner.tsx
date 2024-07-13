@@ -36,7 +36,7 @@ export default function QuizBanner() {
             <p className="text-2xl text-muted-foreground lowercase">
               {/* INCREASE SALES & ENHANCE CUSTOMER EXPERIENCE */}
             </p>
-            <p className="text-justify lg:text-right mt-6 text-lg">
+            <div className="text-justify lg:text-right mt-6 text-lg">
               {/* <br /> Bridge the gap between online and offline audiences, while
               enhancing customer engagement, and leveraging data insights! */}
               <p className="text-center lg:text-right mt-2 text-lg">
@@ -47,7 +47,7 @@ export default function QuizBanner() {
               <p className="text-center lg:text-right text-lg">
                 Take our quick quiz and unlock new opportunities!
               </p>
-            </p>
+            </div>
           </div>
 
           <div className="flex justify-center lg:justify-end mt-8 gap-4">

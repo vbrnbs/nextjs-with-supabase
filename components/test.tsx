@@ -17,6 +17,8 @@ import {
 } from "@/components/ui/navigation-menu";
 import { Link2 } from "lucide-react";
 import Image from "next/image";
+import BlogLanding from "@/app/blog/page";
+import BlogPostBanner from "./BlogPostBanner";
 
 const components: { title: string; href: string; description: string }[] = [
   {
@@ -63,10 +65,10 @@ export function NavigationMenuDemo() {
         <NavigationMenuItem>
           <NavigationMenuTrigger>Blog</NavigationMenuTrigger>
           <NavigationMenuContent>
-            <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr] bg-background">
+            <ul className="grid gap-3 p-6 w-[300px] md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr] bg-background">
               <li className="row-span-3">
                 <NavigationMenuLink asChild>
-                  <a
+                  <Link
                     className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
                     href="/blog"
                   >
@@ -75,22 +77,21 @@ export function NavigationMenuDemo() {
                       blog
                     </div>
                     <p className="text-sm leading-tight text-muted-foreground">
-                      Beautifully designed components that you can copy and
-                      paste into your apps. Accessible. Customizable. Open
-                      Source.
+                      Articles, tutorials, and more...
                     </p>
-                  </a>
+                  </Link>
                 </NavigationMenuLink>
               </li>
-              <ListItem href="/docs" title="Introduction">
-                Re-usable components built using Radix UI and Tailwind CSS.
+              {/* <BlogLanding /> */}
+              <ListItem href="/" title="Why 王NTUIT">
+                Learn more about the 王NTUIT design system.
               </ListItem>
-              <ListItem href="/docs/installation" title="Installation">
+              {/* <ListItem href="/docs/installation" title="Installation">
                 How to install dependencies and structure your app.
               </ListItem>
               <ListItem href="/docs/primitives/typography" title="Typography">
                 Styles for headings, paragraphs, lists...etc
-              </ListItem>
+              </ListItem> */}
             </ul>
           </NavigationMenuContent>
         </NavigationMenuItem>

@@ -32,7 +32,7 @@ export default function RootLayout({
         >
           <main className="min-h-screen flex flex-col items-center">
             <Navigation />
-            <HeroSection />
+            {/* <HeroSection /> */}
             {/* <QuizBanner /> */}
             {children}
             <Footer />

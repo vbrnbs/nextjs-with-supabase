@@ -32,7 +32,7 @@ export default async function AuthButton() {
     <Button variant="outline">
       <Link
         href="/login"
-        className="p-2 flex rounded-md no-underline bg-btn-background hover:bg-btn-background-hover"
+        className="flex rounded-md no-underline bg-btn-background hover:bg-btn-background-hover text-xs font-light"
       >
         {/* <LogIn /> */}
         login
