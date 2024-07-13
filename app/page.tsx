@@ -1,5 +1,4 @@
 import Hero from "@/components/Hero";
-import QuizBanner from "@/components/QuizBanner";
 
 
 export default async function Index() {

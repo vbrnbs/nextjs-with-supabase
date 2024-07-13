@@ -13,7 +13,7 @@ import {
   NavigationMenuTrigger,
   NavigationMenuViewport,
 } from "@/components/ui/navigation-menu";
-import { NavigationMenuDemo } from "./test";
+import { NavigationMenuDemo } from "./NavigationMenu";
 import CollapsibleMenu from "@/components/ui/CollapsibleMenu";
 import HamburgerIcon from "./ui/HamburgerIcon";
 // import useScreenSize from "@/components/ui/useScreenSize";
@@ -42,8 +42,8 @@ const Navigation = () => {
         <Link href="/">
           <Image src="/logo.png" alt="logo" width={40} height={40} />
         </Link>
-        <NavigationMenuDemo />
-        <div className="flex gap-3">
+        
+        <div className="flex gap-0 md:gap-3">
           {/* {isSupabaseConnected && <AuthButton />} */}
           {/* <NavigationMenuDemo /> */}
           {/* <CollapsibleMenu /> */}
@@ -55,9 +55,8 @@ const Navigation = () => {
             <NavigationMenuDemo />
           )} */}
           {/* {isMobile ? <CollapsibleMenu /> : <NavigationMenuDemo />} */}
-
+          <NavigationMenuDemo />
           <AuthButton />
-          <ModeToggle />
         </div>
       </nav>
     </div>

@@ -29,13 +29,13 @@ export default async function AuthButton() {
       </form>
     </div>
   ) : (
-    <Button variant="outline">
+    <Button variant="link">
       <Link
         href="/login"
         className="flex rounded-md no-underline bg-btn-background hover:bg-btn-background-hover text-xs font-light"
       >
-        {/* <LogIn /> */}
-        login
+        <LogIn />
+        
       </Link>
     </Button>
   );

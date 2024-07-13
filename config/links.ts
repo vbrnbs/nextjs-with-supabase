@@ -6,7 +6,7 @@ const siteConfig = {
         facebook: "https://www.facebook.com/people/NTUIT/61561882762026/",
         linkedin: "https://www.linkedin.com/company/ntuitsignage",
         x: "https://x.com/NTUITsignage",
-        medium: "https://medium.com/feed/@ntuit",
+        medium: "https://medium.com/@ntuit",
         pinterest: "https://nz.pinterest.com/ntuit0091/",
     },
     medium: {

@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import * as Collapsible from "@radix-ui/react-collapsible";
 import { motion } from "framer-motion";
 import HamburgerIcon from "./HamburgerIcon";
-import { NavigationMenuDemo } from "../test";
+import { NavigationMenuDemo } from "../NavigationMenu";
 
 const CollapsibleMenu: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);

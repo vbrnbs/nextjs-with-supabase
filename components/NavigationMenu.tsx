@@ -4,7 +4,7 @@ import * as React from "react";
 import Link from "next/link";
 
 import { cn } from "@/lib/utils";
-import { ModeToggle } from "../components/ui/ThemeToggle";
+import { ModeToggle } from "./ui/ThemeToggle";
 // import { Icons } from "@/components/icons"
 import {
   NavigationMenu,
@@ -15,10 +15,11 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
-import { Link2 } from "lucide-react";
+import { Link2, Menu, MenuIcon } from "lucide-react";
 import Image from "next/image";
 import BlogLanding from "@/app/blog/page";
 import BlogPostBanner from "./BlogPostBanner";
+import AuthButton from "./AuthButton";
 
 const components: { title: string; href: string; description: string }[] = [
   {
@@ -63,60 +64,44 @@ export function NavigationMenuDemo() {
     <NavigationMenu>
       <NavigationMenuList>
         <NavigationMenuItem>
-          <NavigationMenuTrigger>Blog</NavigationMenuTrigger>
+          <NavigationMenuTrigger>
+            <MenuIcon />
+          </NavigationMenuTrigger>
           <NavigationMenuContent>
+            
             <ul className="grid gap-3 p-6 w-[300px] md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr] bg-background">
               <li className="row-span-3">
                 <NavigationMenuLink asChild>
                   <Link
-                    className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
+                    className="flex h-full w-full select-none flex-col justify-start md:justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-2 no-underline outline-none focus:shadow-md"
                     href="/blog"
                   >
                     <Image src="/logo.png" alt="logo" width={32} height={32} />
-                    <div className="mb-2 mt-4 text-lg font-medium">
-                      blog
-                    </div>
+                    <div className="mb-2 mt-4 text-lg font-medium">blog</div>
                     <p className="text-sm leading-tight text-muted-foreground">
                       Articles, tutorials, and more...
                     </p>
                   </Link>
                 </NavigationMenuLink>
               </li>
-              {/* <BlogLanding /> */}
               <ListItem href="/" title="Why 王NTUIT">
                 Learn more about the 王NTUIT design system.
               </ListItem>
-              {/* <ListItem href="/docs/installation" title="Installation">
-                How to install dependencies and structure your app.
+              <ListItem href="/quiz" title="GET YOUR READINESS-SCORE">
+                Take the quiz to see how ready you are for the future.
               </ListItem>
-              <ListItem href="/docs/primitives/typography" title="Typography">
-                Styles for headings, paragraphs, lists...etc
-              </ListItem> */}
+              <div className="w-full p-4 rounded-sm">
+              <Image src="/example.webp" alt="logo" width={320} height={320} />
+              </div>
+                
+
+              <div className="flex w-full justify-end"></div>
             </ul>
+            <div className="absolute top-0 right-0 md:left-0 md:right-100 md:top-0 p-6">
+              <ModeToggle />
+            </div>
           </NavigationMenuContent>
         </NavigationMenuItem>
-        <NavigationMenuItem>
-          <NavigationMenuTrigger>Products</NavigationMenuTrigger>
-          <NavigationMenuContent>
-            <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] bg-background">
-              {components.map((component) => (
-                <ListItem
-                  key={component.title}
-                  title={component.title}
-                  href={component.href}
-                >
-                  {component.description}
-                </ListItem>
-              ))}
-            </ul>
-          </NavigationMenuContent>
-        </NavigationMenuItem>
-        {/* <NavigationMenuItem>
-          <Link href="/docs" legacyBehavior passHref>
-            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-            </NavigationMenuLink>
-          </Link>
-        </NavigationMenuItem> */}
       </NavigationMenuList>
     </NavigationMenu>
   );
@@ -133,7 +118,7 @@ const ListItem = React.forwardRef<
           ref={ref}
           className={cn(
             "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
-            className,
+            className
           )}
           {...props}
         >
